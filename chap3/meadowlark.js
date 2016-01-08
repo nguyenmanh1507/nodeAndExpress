@@ -4,6 +4,16 @@ var express = require('express'),
 
 app.set('port', process.env.PORT || 9000);
 
+app.get('/', function(req, res) {
+	res.type('text/plain');
+	res.send('Meadowlark Travel');
+});
+
+app.get('/about', function(req, res) {
+	res.type('text/plain');
+	res.send('About Meadowlark Travel');
+});
+
 // custom 404 page
 app.use(function(req, res) {
 	res.type('text/plain');
@@ -11,7 +21,8 @@ app.use(function(req, res) {
 	res.send('404 - Not Found');
 });
 
-app.use(function(req, res) {
+// custom 500 page
+app.use(function(err, req, res, next) {
 	console.error(err.stack);
 	res.type('text/plain');
 	res.status(500);
@@ -19,5 +30,5 @@ app.use(function(req, res) {
 });
 
 app.listen(app.get('port'), function() {
-	console.log('Express started on ');
+	console.log('Express started on http://' + app.get('port') + '.');
 });
