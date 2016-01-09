@@ -7,10 +7,20 @@ var handlebars = require('express3-handlebars')
 								.create({defaultLayout: 'main'})
 ;
 
+var fortunes = [
+	"Conquer your fears or they will conquer you.",
+	"Rivers need springs.",
+	"Do not fear what you don't know.",
+	"You will have a pleasant surprise.",
+	"Whenever possible, keep it simple."
+];
+
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 app.set('port', process.env.PORT || 9000);
+
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
 	res.render('home');
