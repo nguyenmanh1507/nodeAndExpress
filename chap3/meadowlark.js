@@ -8,11 +8,19 @@ var handlebars = require('express3-handlebars')
 ;
 
 var fortunes = [
+<<<<<<< HEAD
 	'Conquer your fear or they will conquer you',
 	'Rivers need spring',
 	'Do not fear what you don\'t know',
 	'You will have a pleasant surprise',
 	'Whenever possible, keep it simple'
+=======
+	"Conquer your fears or they will conquer you.",
+	"Rivers need springs.",
+	"Do not fear what you don't know.",
+	"You will have a pleasant surprise.",
+	"Whenever possible, keep it simple."
+>>>>>>> 19b9d9d42cd0461b29e4f25033e287e9de85adb7
 ];
 
 app.engine('handlebars', handlebars.engine);
