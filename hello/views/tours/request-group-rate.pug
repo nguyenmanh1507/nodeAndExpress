@@ -1,0 +1,22 @@
+extend ../layouts/main
+
+block body
+  h1 Request Group Rate
+  form
+    input(type="hidden", name="referrer")
+    label(for="name") Name:
+    input(type="text", id="fieldName", name="name")
+    br
+    label(for="groupSize") Group size:
+    input(type="text", name="groupSize", id="groupSize")
+    br
+    label(for="email") Email:
+    input(type="email", name="email", id="email")
+    br
+    button(type="submit") Submit
+
+  script.
+    $(document).ready(function() {
+      $('[name="referrer"]').val(document.referrer)
+      console.log($('[name="referrer"]').val(), document.referrer)
+    })
