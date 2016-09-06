@@ -3,8 +3,23 @@ html(lang="en")
 head
   meta(charset="UTF-8")
   title Meadowlark Travel
+  if showTest
+    link(rel="stylesheet", href="/vendor/mocha.css")
 body
   header
     img(src="/images/moon.png", alt="Moon")
 
   block body
+
+  if showTest
+    #mocha
+    script(src="/vendor/mocha.js")
+    script(src="/vendor/chai.js")
+    script.
+      mocha.ui('tdd')
+      var assert = chai.assert
+    script(src="/qa/test-global.js")
+    if pageTestScript
+      script(src=pageTestScript)
+    script.
+      mocha.run()

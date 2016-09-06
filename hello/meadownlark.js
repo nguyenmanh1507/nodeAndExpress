@@ -10,12 +10,20 @@ app.set('port', process.env.PORT || 3000)
 
 app.use(express.static(__dirname + '/public'))
 
+app.use((req, res, next) => {
+  res.locals.showTest = app.get('env') !== 'production' && req.query.test === '1'
+  next()
+})
+
 app.get('/', (req, res) => {
   res.render('home')
 })
 
 app.get('/about', (req, res) => {
-  res.render('about', {fortune: fortunes.getFortune()})
+  res.render('about', {
+    fortune: fortunes.getFortune(),
+    pageTestScript: '/qa/test-about.js'
+  })
 })
 
 // custom 404 page
