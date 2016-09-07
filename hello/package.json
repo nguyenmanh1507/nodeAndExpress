@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js",
+    "eslint": "./node_modules/.bin/eslint *.js --quiet",
+    "eslint:watch": "onchange '*.js' -- npm run eslint"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +19,11 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^3.4.0",
+    "eslint-config-google": "^0.6.0",
+    "expect": "^1.20.2",
     "mocha": "^3.0.2",
+    "onchange": "^3.0.0",
     "zombie": "^4.2.1"
   }
 }

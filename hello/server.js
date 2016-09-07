@@ -1,9 +1,9 @@
-var http = require('http'),
-   fs = require('fs')
+var http = require('http')
+var fs = require('fs')
 
 function serveStaticFile(res, path, contentType, responseCode) {
   if (!responseCode) responseCode = 200
-  fs.readFile(__dirname + path, function(err, data) {
+  fs.readFile(path.join(__dirname), function(err, data) {
     if (err) {
       res.writeHead(500, {'Content-Type': 'text/plain'})
       res.end('500 - Internal Error')
@@ -25,6 +25,7 @@ http.createServer(function(req, res) {
       break
     case '/images/moon.png':
       serveStaticFile(res, '/public/images/moon.png', 'image/png')
+      break
     default:
       serveStaticFile(res, '/public/404.html', 'text/html', 404)
       break

@@ -2,16 +2,18 @@
 
 var express = require('express')
 var fortunes = require('./lib/fortunes')
+var path = require('path')
 
 const app = express()
 
 app.set('port', process.env.PORT || 3000)
   .set('view engine', 'pug')
 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(path.join(__dirname, '/public')))
 
 app.use((req, res, next) => {
-  res.locals.showTest = app.get('env') !== 'production' && req.query.test === '1'
+  const cond = app.get('env') !== 'production' && req.query.test === '1'
+  res.locals.showTest = cond
   next()
 })
 
