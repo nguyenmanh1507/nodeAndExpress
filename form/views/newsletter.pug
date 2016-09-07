@@ -1,0 +1,13 @@
+extend layouts/index
+nho
+
+form(action="/process?form=newsletter", method="POST")
+  input(type="hidden", name="_csrf", val="#{csrf}")
+  div
+    label(for="fieldName") Name:
+    input(type="text", id="fieldName", name="name")
+  div
+    label(for="fieldEmail") Email:
+    input(type="email", id="fieldEmail", name="email")
+  div
+    button(type="submit") Submit
