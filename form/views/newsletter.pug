@@ -1,13 +1,17 @@
-extend layouts/index
-nho
+extend layouts/default
 
-form(action="/process?form=newsletter", method="POST")
-  input(type="hidden", name="_csrf", val="#{csrf}")
-  div
-    label(for="fieldName") Name:
-    input(type="text", id="fieldName", name="name")
-  div
-    label(for="fieldEmail") Email:
-    input(type="email", id="fieldEmail", name="email")
-  div
-    button(type="submit") Submit
+block content
+  h2 Sign up for our newsletter to receive news and specials!
+  form.form-horizontal(action="/process?form=newsletter" method="POST" role="form")
+    input(type="hidden" name="_csrf" value="#{csrf}")
+    .form-group
+      label.col-sm-2.control-label(for="fieldName") Name:
+      .col-sm-4
+        input.form-control(type="text" id="fieldName" name="name")
+    .form-group
+      label.col-sm-2.control-label(for="fieldEmail") Email:
+      .col-sm-4
+        input.form-control(type="email" id="fieldEmail" name="email" required)
+    .form-group
+      .col-sm-offset-2.col-sm-4
+        button.btn.btn-default(type="submit") Register
