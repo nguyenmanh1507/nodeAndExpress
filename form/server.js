@@ -21,12 +21,17 @@ app.get('/newsletter', (req, res) => {
 })
 
 // Process route
-app.get('/process', (req, res) => {
+app.post('/process', (req, res) => {
   console.log(`Form (from querystring): ${req.query.form}`)
   console.log(`CSRF token (from hidden form field): ${req.body._csrf}`)
   console.log(`Name (from visible form field): ${req.body.name}`)
   console.log(`Email (from visible form field): ${req.body.email}`)
   res.redirect(303, '/thank-you')
+})
+
+// Thank you route
+app.get('/thank-you', (req, res) => {
+  res.render('thank-you')
 })
 
 app.listen(3000)

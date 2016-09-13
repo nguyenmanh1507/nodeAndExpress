@@ -3,15 +3,15 @@ extend layouts/default
 block content
   h2 Sign up for our newsletter to receive news and specials!
   form.form-horizontal(action="/process?form=newsletter" method="POST" role="form")
-    input(type="hidden" name="_csrf" value="#{csrf}")
+    input(type="hidden" name="_csrf" value=`${csrf}`)/
     .form-group
       label.col-sm-2.control-label(for="fieldName") Name:
       .col-sm-4
-        input.form-control(type="text" id="fieldName" name="name")
+        input.form-control(type="text" id="fieldName" name="name")/
     .form-group
       label.col-sm-2.control-label(for="fieldEmail") Email:
       .col-sm-4
-        input.form-control(type="email" id="fieldEmail" name="email" required)
+        input.form-control(type="email" id="fieldEmail" name="email" required)/
     .form-group
       .col-sm-offset-2.col-sm-4
         button.btn.btn-default(type="submit") Register
