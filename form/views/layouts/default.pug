@@ -10,3 +10,30 @@ body
     .row
       .col-xs-12
         block content
+
+  script(src="/scripts/jquery.min.js")
+  if formAjax
+    script.
+      $(document).ready(function() {
+        $('form').on('submit', function(evt) {
+          evt.preventDefault()
+          const action = $(this).attr('action')
+          const $parent = $(this).closest('div')
+
+          $.ajax({
+            url: action,
+            type: 'POST',
+            success: function(data) {
+              console.log(data)
+              if (data.success) {
+                $parent.html('<h1>Thank you!</h1>')
+              } else {
+                $parent.html('There was a problem')
+              }
+            },
+            error: function() {
+              $parent.html('There was a problem')
+            }
+          })
+        })
+      })
