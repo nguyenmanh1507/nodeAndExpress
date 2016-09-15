@@ -56,4 +56,6 @@ app.get('/thank-you', (req, res) => {
   res.render('thank-you')
 })
 
-app.listen(3000)
+app.listen(3000, () => {
+  console.log('Listening at http://localhost:3000 ...')
+})
