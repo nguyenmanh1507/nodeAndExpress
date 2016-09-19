@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title cookie and session
+    link(rel="stylesheet", href="/styles/bootstrap.css")
+  body
+    .container
+      .row
+        .col-xs-12.col-sm-6.col-sm-offset-3
+          form(action="/", method="POST")
+            .form-group
+              label(for="email")
+              input.form-control#email
+            .form-group
+              label(for="name")
+              input.form-control#name
+            .form-group
+              button.btn.btn-primary(type="submit") Send
+
+    if flash
+      div.alert.alert-dismissible.alert-#{flash.type}
+        button.close(type="button", data-dismiss="alert", aria-hidden="true") &times;
+        strong= flash.intro
+        span= flash.message
